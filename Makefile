@@ -6,8 +6,9 @@ ifeq ($(DEBUG), 1)
 CFLAGS += -Wno-unused-variable -g -fdiagnostics-color=always
 endif
 
-LIBS := 
-LIBSINC :=
+LIBS := ./libs/mlx/libmlx.a
+LIBS_BIN := -framework OpenGL -framework AppKit -lm
+LIBSINC := -I./libs/mlx
 INC := -I./inc
 
 SRCS := main.c
@@ -19,12 +20,15 @@ OBJ := ${addprefix $(OBJ_DIR)/, ${SRCS:.c=.o}}
 
 all : $(NAME)
 
-$(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $(OBJ) $(INC) $(LIBSINC) $(LIBS)
+$(NAME) : $(OBJ) $(LIBS)
+	$(CC) $(CFLAGS) -o $@ $(OBJ) $(INC) $(LIBSINC) $(LIBS) $(LIBS_BIN)
 
 $(OBJ_DIR)/%.o : $(SRC_DIR)/%.c
 	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -o $@ -c $< $(INC) $(LIBSINC)
+
+%.a :
+	cd $(@D) && $(MAKE)
 
 clean:
 	$(RM) $(OBJ)
