@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cam.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kmendes <kmendes@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 02:34:45 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/12 11:46:33 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/09/06 17:48:33 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "ftmlx.h"
+#include "libftmlx.h"
 
 void	ftmlx_update_cam(t_ftcam *cam)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   trans.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kmendes <kmendes@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 02:56:25 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/12 11:46:33 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/08/29 13:06:48 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftmlx/math/ftmlx_trans.h"
+#include "libftmlx/math/ftmlx_trans.h"
 
 t_transform	transform_inv(t_transform t)
 {

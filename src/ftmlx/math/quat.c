@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   quat.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kmendes <kmendes@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 02:46:42 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/12 11:46:33 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/08/29 13:06:22 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "ftmlx/math/ftmlx_quat.h"
+#include "libftmlx/math/ftmlx_quat.h"
 
 t_quat	quat_norm(t_quat q)
 {

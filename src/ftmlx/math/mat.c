@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mat.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kmendes <kmendes@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 02:39:31 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/12 11:46:33 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/07/23 19:03:28 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftmlx/math/ftmlx_mat.h"
+#include "libftmlx/math/ftmlx_mat.h"
 
 t_fvec4	mat_mult_vec(t_mat4 m, t_fvec4 v)
 {

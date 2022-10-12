@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   vec.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kmendes <kmendes@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 02:59:48 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/12 11:46:33 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/05/31 03:02:47 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "ftmlx/math/ftmlx_vec.h"
+#include "libftmlx/math/ftmlx_vec.h"
 
 float	fvec4_magn(t_fvec4 v)
 {

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ftmlx_cam.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kmendes <kmendes@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 03:07:57 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/12 11:46:33 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/09/06 19:37:36 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FTMLX_CAM_H
 # define FTMLX_CAM_H
 
-# include "ftmlx.h"
+# include "libftmlx.h"
 
 typedef struct s_ftcam
 {

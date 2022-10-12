@@ -15,8 +15,8 @@
 
 # include <mlx.h>
 
-# include "ftmlx/ftmlx_color.h"
-# include "ftmlx/ftmlx_math.h"
+# include "libftmlx/ftmlx_color.h"
+# include "libftmlx/ftmlx_math.h"
 
 typedef void	*t_mlx;
 typedef void	*t_mlx_win;

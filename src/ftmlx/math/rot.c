@@ -6,13 +6,13 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 02:48:06 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/12 11:46:33 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/06/01 13:19:45 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "ftmlx/math/ftmlx_utils.h"
-#include "ftmlx/math/ftmlx_rot.h"
+#include "libftmlx/math/ftmlx_utils.h"
+#include "libftmlx/math/ftmlx_rot.h"
 
 t_quat	axisg_to_quat(t_axisg ag)
 {

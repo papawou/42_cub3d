@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kmendes <kmendes@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 01:48:47 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/12 11:46:36 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/09/15 03:27:15 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-#include "ftmlx.h"
-#include "ftmlx/math/ftmlx_utils.h"
-#include "ftmlx/ftmlx_color.h"
+#include "libftmlx.h"
+#include "libftmlx/math/ftmlx_utils.h"
+#include "libftmlx/ftmlx_color.h"
 
 t_color	ftmlx_lerp_color(t_color a, t_color b, double alpha)
 {
