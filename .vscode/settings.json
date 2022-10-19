@@ -1,5 +1,8 @@
 {
 	"files.associations": {
-		"libftmlx.h": "c"
+		"libftmlx.h": "c",
+		"cub3d.h": "c",
+		"get_next_line.h": "c",
+		"stdlib.h": "c"
 	}
 }

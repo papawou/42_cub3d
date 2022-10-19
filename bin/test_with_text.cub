@@ -1,0 +1,14 @@
+NO ./bin/text/north
+SO ./bin/text/south
+WE ./bin/text/west
+EA ./bin/text/east
+
+F 220,100,0
+C 255,30,0
+
+1111111111
+1000000001
+1000000001
+1000000001
+1000000001
+1111111111
