@@ -12,7 +12,7 @@ t_list	*get_parser_book(char *file_path)
 	fd = open(file_path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_putstr_fd("open failed", STDERR_FILENO);
+		ft_putstr_fd("open failed\n", STDERR_FILENO);
 		return (false);
 	}
 	line = NULL;
@@ -24,7 +24,7 @@ t_list	*get_parser_book(char *file_path)
 		tmp = ft_lstnew(line);
 		if (tmp == NULL)
 		{
-			ft_putstr_fd("ft_lstnew failed", STDERR_FILENO);
+			ft_putstr_fd("ft_lstnew failed\n", STDERR_FILENO);
 			ft_lstclear(&book, free);
 			return (NULL);
 		}
@@ -41,12 +41,22 @@ _Bool parser(char *file_path, t_scene *sc)
 	book = get_parser_book(file_path);
 	if (book == NULL)
 	{
-		ft_putstr_fd("get_parser_book returned NULL", STDERR_FILENO);
+		ft_putstr_fd("get_parser_book\n", STDERR_FILENO);
 		return (false);
 	}
-	sc->map_size = parse_map_size(book);
-	sc->map = gen_map(sc->map_size);
-	if (sc->map == NULL)
+	sc->map.len = parse_map_size(book);
+	sc->map.data = create_map(sc->map.len);
+	if (sc->map.data == NULL)
 		return (false);
+	if (!parse_map(sc->map, &sc->player, book))
+	{
+		ft_putstr_fd("parse_map\n", STDERR_FILENO);
+		return (false);
+	}
+	if (!check_scene(sc))
+	{
+		ft_putstr_fd("check_scene\n", STDERR_FILENO);
+		return (false);
+	}
 	return (true);
 }

@@ -18,7 +18,7 @@
 
 typedef struct s_obj
 {
-	t_fvec3	pos;
+	t_fvec2	pos;
 	t_quat	rot;
 }	t_obj;
 
@@ -32,19 +32,38 @@ typedef struct s_atlas
 	t_img	*text_ea;
 }	t_atlas;
 
+typedef struct s_int_2d
+{
+	t_vec2	len;
+	int			**data;
+} t_int_2d;
+
 typedef struct s_scene
 {
-	t_atlas	atlas;
-	t_obj	player;
-	int		**map;
-	t_vec2	map_size;
+	t_atlas		atlas;
+	t_obj			player;
+	t_int_2d	map;
 }	t_scene;
 
 //parser.c
 _Bool		parser(char *file_path, t_scene *sc);
 void		exit_clean_parser(void);
-int			count_line_x_words(char *line);
-t_vec2	parse_map_size(t_list *book);
-int			**gen_map(t_vec2 map_size);
+
+//MAP
+//parser_map.c
+int				count_line_x_words(char *line);
+t_vec2		parse_map_size(t_list *book);
+_Bool			parse_map(t_int_2d map, t_obj *player, t_list *book);
+
+//check_map.c
+_Bool check_map(int **map, t_vec2 len);
+//map.c
+int				**create_map(t_vec2 map_size);
+
+//SCENE
+//scene.c
+void	init_scene(t_scene *sc);
+_Bool	check_scene(t_scene *sc);
+
 
 #endif
