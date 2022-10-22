@@ -42,7 +42,6 @@ int	**create_map(t_vec2 map_size)
 		}
 		++i;
 	}
-	//todo set map at -1
 	reset_map((t_int_2d){.len= map_size, .data= map});
 	return (map);
 }

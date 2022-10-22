@@ -22,5 +22,6 @@ int	main(int argc, char **argv)
 		ft_putstr_fd("wrong_parser\n", STDERR_FILENO);
 		return (1);
 	}
+	
 	return (0);
 }
