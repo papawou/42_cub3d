@@ -24,7 +24,7 @@ int	**create_map(t_vec2 map_size)
 
 	if (map_size.y <= 0 || map_size.x <= 0)
 	{
-		ft_putstr_fd("create_map: map_size incorrect\n", STDERR_FILENO);
+		print_error("create_map: map_size incorrect");
 		return (false);
 	}
 	map = (int **)malloc(sizeof(int *) * map_size.y);

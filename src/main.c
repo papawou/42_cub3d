@@ -14,14 +14,14 @@ int	main(int argc, char **argv)
 	init_scene(&sc);
 	if (!check_usage(argc))
 	{
-		ft_putstr_fd("wrong_user\n", STDERR_FILENO);
+		print_error("wrong_user");
 		return (1);
 	}
 	if (!parser(argv[1], &sc))
 	{
-		ft_putstr_fd("wrong_parser\n", STDERR_FILENO);
+		print_error("wrong_parser");
 		return (1);
 	}
-	
+
 	return (0);
 }

@@ -65,5 +65,7 @@ int				**create_map(t_vec2 map_size);
 void	init_scene(t_scene *sc);
 _Bool	check_scene(t_scene *sc);
 
+//format.c
+void	print_error(char *str);
 
 #endif
