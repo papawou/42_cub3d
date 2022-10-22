@@ -48,5 +48,6 @@ void	ftmlx_img_put_img(t_img *src, t_img *dst, int dst_x, int dst_y);
 int		ftmlx_get_color_value(t_mlx mlx, int color);
 void	fill_img(t_img *img, t_color c);
 int		ftmlx_init(int width, int height, t_ftmlx *ftmlx);
+void	ftmlx_clean(t_ftmlx *ftmlx);
 
 #endif

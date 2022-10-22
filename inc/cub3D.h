@@ -40,9 +40,17 @@ typedef struct s_int_2d
 
 typedef struct s_scene
 {
-	t_atlas		atlas;
+	//game
 	t_obj			player;
 	t_int_2d	map;
+
+	//display
+	t_ftmlx		ftmlx;
+	t_img			*canvas;
+	t_img			*minimap;
+	//t_img		*hud;
+
+	t_atlas		atlas;
 }	t_scene;
 
 //parser.c
@@ -57,15 +65,22 @@ _Bool			parse_map(t_int_2d map, t_obj *player, t_list *book);
 
 //check_map.c
 _Bool check_map(int **map, t_vec2 len);
+
 //map.c
 int				**create_map(t_vec2 map_size);
+void			clean_map(t_int_2d *map);
 
 //SCENE
 //scene.c
 void	init_scene(t_scene *sc);
 _Bool	check_scene(t_scene *sc);
+void	clean_scene(t_scene *sc);
 
 //format.c
 void	print_error(char *str);
+
+//atlas.c
+void clean_atlas(t_mlx mlx, t_atlas *atlas);
+
 
 #endif

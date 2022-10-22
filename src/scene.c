@@ -1,5 +1,19 @@
 #include "cub3D.h"
 
+void	clean_scene(t_scene *sc)
+{
+	clean_map(&sc->map);
+	if (sc->ftmlx.mlx)
+	{
+		clean_atlas(sc->ftmlx.mlx, &sc->atlas);
+		ftmlx_free_img(sc->ftmlx.mlx, sc->canvas);
+		sc->canvas = NULL;
+		ftmlx_free_img(sc->ftmlx.mlx, sc->minimap);
+		sc->minimap = NULL;
+		ftmlx_clean(&sc->ftmlx);
+	}
+}
+
 void	init_scene(t_scene *sc)
 {
 	*sc = (t_scene) {0};

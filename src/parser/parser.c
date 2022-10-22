@@ -2,6 +2,11 @@
 
 #include "cub3D.h"
 
+void	clean_parser(t_list	**book)
+{
+	ft_lstclear(book, free);
+}
+
 t_list	*get_parser_book(char *file_path)
 {
 	char	*line;
@@ -47,12 +52,17 @@ _Bool parser(char *file_path, t_scene *sc)
 	sc->map.len = parse_map_size(book);
 	sc->map.data = create_map(sc->map.len);
 	if (sc->map.data == NULL)
+	{
+		clean_parser(&book);
 		return (false);
+	}
 	if (!parse_map(sc->map, &sc->player, book))
 	{
+		clean_parser(&book);
 		print_error("parse_map");
 		return (false);
 	}
+	clean_parser(&book);
 	if (!check_scene(sc))
 	{
 		print_error("check_scene");

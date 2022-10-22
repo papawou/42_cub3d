@@ -1,5 +1,21 @@
 #include "cub3D.h"
 
+void	clean_map(t_int_2d *map)
+{
+	int	i;
+
+	if (map->data == NULL)
+		return ;
+	i = 0;
+	while (i < map->len.y)
+	{
+		free(map->data[i]);
+		++i;
+	}
+	free(map->data);
+	map->data = NULL;
+}
+
 static void	reset_map(t_int_2d map)
 {
 	t_vec2	map_i;
