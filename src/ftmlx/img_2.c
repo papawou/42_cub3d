@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img_2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmendes <kmendes@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 03:05:50 by kmendes           #+#    #+#             */
-/*   Updated: 2022/09/15 03:28:07 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/22 22:21:22 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ftmlx_img_put_img(t_img *src, t_img *dst, int dst_x, int dst_y)
 	}
 }
 
-void	fill_img(t_img *img, t_color c)
+void	ftmlx_fill_img(t_img *img, t_color c)
 {
 	int	x;
 	int	y;

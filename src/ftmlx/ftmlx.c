@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 03:03:38 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/22 21:37:36 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/22 22:42:27 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ int	ftmlx_init(int width, int height, t_ftmlx *ftmlx)
 	if (ftmlx->win == NULL)
 		return (1);
 	ftmlx->wh = (t_vec2){width, height};
+	ftmlx_get_color_value(ftmlx->mlx, 0);
 	return (0);
 }

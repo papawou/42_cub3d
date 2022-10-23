@@ -16,6 +16,9 @@
 # define E_CODE_INIT 2
 # define E_CODE_CLEAN 4
 
+# define SCREEN_WIDTH 1280
+# define SCREEN_HEIGHT 720
+
 typedef struct s_obj
 {
 	t_fvec2	pos;
