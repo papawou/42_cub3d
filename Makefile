@@ -17,7 +17,7 @@ SRCS := main.c map.c format.c scene.c atlas.c\
 		gnl/get_next_line.c	gnl/get_next_line_utils.c\
 
 SRCS += ftmlx/color/color.c ftmlx/ftmlx.c\
-ftmlx/graphics/cam.c ftmlx/graphics/print/put_line.c\
+ftmlx/graphics/cam.c ftmlx/graphics/print/put_line.c ftmlx/graphics/print/put_circle.c\
 ftmlx/img.c ftmlx/img_2.c\
 ftmlx/math/mat.c ftmlx/math/quat.c ftmlx/math/quat_2.c ftmlx/math/rot.c ftmlx/math/trans.c ftmlx/math/trans_2.c\
 ftmlx/math/utils.c ftmlx/math/utils_2.c\
