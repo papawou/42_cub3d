@@ -12,9 +12,8 @@ LIBSINC := -I./libs/mlx -I./libs/libft/inc
 INC := -I./inc
 
 SRCS := main.c map.c format.c scene.c atlas.c\
-		graphics/minimap.c graphics/map.c\
-		utils/map.c\
-		parser/parser.c	parser/parser_map.c parser/check_map.c\
+		graphics/minimap.c \
+		parser/parser.c	parser/parser_map.c parser/check_map.c parser/parser_clean.c\
 		gnl/get_next_line.c	gnl/get_next_line_utils.c\
 
 SRCS += ftmlx/color/color.c ftmlx/ftmlx.c\
