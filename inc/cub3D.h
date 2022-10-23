@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:28:01 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/23 23:55:15 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/24 00:16:47 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ t_vec2		parse_map_size(t_list *book);
 _Bool		parse_map(t_int_2d map, t_obj *player, t_list *book);
 //	check_map.c
 _Bool		check_map(int **map, t_vec2 len);
+//	parser_clean.c
+void		exit_clean_parser(void);
 
 //map.c
 int			**create_map(t_vec2 map_size);

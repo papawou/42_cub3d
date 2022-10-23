@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:32:27 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/23 23:33:56 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/24 00:16:54 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_color	get_tile_color(t_scene *sc, t_vec2 pos)
 	return ((t_color){255, 20, 147, 0});
 }
 
-void	gen_minimap(t_scene *sc)
+static void	gen_minimap(t_scene *sc)
 {
 	t_vec2	map_dst;
 	t_faabb	box;
