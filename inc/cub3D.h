@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:28:01 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/23 23:31:44 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/23 23:55:15 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,24 +70,20 @@ typedef struct s_scene
 	t_atlas		atlas;
 }	t_scene;
 
-//parser.c
+//PARSER/*
+//	parser.c
 _Bool		parser(char *file_path, t_scene *sc);
-void		exit_clean_parser(void);
-
-//MAP
-//parser_map.c
+//	parser_map.c
 int			count_line_x_words(char *line);
 t_vec2		parse_map_size(t_list *book);
 _Bool		parse_map(t_int_2d map, t_obj *player, t_list *book);
-
-//check_map.c
+//	check_map.c
 _Bool		check_map(int **map, t_vec2 len);
 
 //map.c
 int			**create_map(t_vec2 map_size);
 void		clean_map(t_int_2d *map);
 
-//SCENE
 //scene.c
 void		init_scene(t_scene *sc);
 _Bool		check_scene(t_scene *sc);
@@ -99,7 +95,8 @@ void		print_error(char *str);
 //atlas.c
 void		clean_atlas(t_mlx mlx, t_atlas *atlas);
 
-//graphics/minimap.c
+//GRAPHICS/*
+//	minimap.c
 void		render_minimap(t_scene *sc);
 
 #endif
