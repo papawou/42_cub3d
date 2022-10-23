@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmendes <kmendes@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 14:12:53 by kmendes           #+#    #+#             */
-/*   Updated: 2022/08/29 14:12:53 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/23 17:21:03 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libftmlx/math/ftmlx_vec.h"
 
 float	ft_clamp(float min, float max, float value)
 {
@@ -29,15 +31,7 @@ float	ft_invlerp(float start, float end, float value)
 	return ((value - start) / (end - start));
 }
 
-typedef struct s_remap_p
+float	ft_remap(t_fvec2 in, t_fvec2 out, float value)
 {
-	float	input_a;
-	float	input_b;
-	float	out_a;
-	float	out_b;
-}	t_remap_p;
-
-float	ft_remap(t_remap_p p, float value)
-{
-	return (ft_lerp(p.out_a, p.out_b, ft_invlerp(p.input_a, p.input_b, value)));
+	return (ft_lerp(out.x, out.y, ft_invlerp(in.x, in.y, value)));
 }

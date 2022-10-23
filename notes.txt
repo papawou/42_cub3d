@@ -1,0 +1,28 @@
+//MINIMAP
+
+//minimap 1case = 10px 10px (== minimap is width: 100px w, cqfd 10 case max)
+	//centered on player
+	//dont rotate
+	//tothink? ftmlx render generic aabb func ?
+	//matrix ?
+
+	//get_pxl_color_from_map?
+
+//MAP_MAP gen_funciton
+void	map_map(t_scene *sc, _Bool (*func)(t_scene *, t_vec2 pos))
+{
+	t_vec2	map_i;
+
+	map_i = (t_vec2){0};
+	while (map_i.y < sc->map.len.y)
+	{
+		map_i.x = 0;
+		while (map_i.x < sc->map.len.x)
+		{
+			if (!func(sc, map_i))
+				return ;
+			++map_i.x;
+		}
+		++map_i.y;
+	}
+}

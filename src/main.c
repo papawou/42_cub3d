@@ -10,6 +10,7 @@ _Bool	check_usage(int argc)
 int	draw(t_scene *sc)
 {
 	ftmlx_fill_img(sc->canvas, (t_color) {255, 0, 0, 0});
+	render_minimap(sc);
 	mlx_put_image_to_window(sc->ftmlx.mlx, sc->ftmlx.win, sc->canvas->img, 0, 0);
 	return (0);
 }

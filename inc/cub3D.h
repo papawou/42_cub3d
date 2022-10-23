@@ -19,6 +19,13 @@
 # define SCREEN_WIDTH 1280
 # define SCREEN_HEIGHT 720
 
+typedef enum 
+{
+	EMPTY = -1,
+	GROUND = 0,
+	WALL = 1
+} e_tile;
+
 typedef struct s_obj
 {
 	t_fvec2	pos;
@@ -85,5 +92,7 @@ void	print_error(char *str);
 //atlas.c
 void clean_atlas(t_mlx mlx, t_atlas *atlas);
 
+//graphics/minimap.c
+void	render_minimap(t_scene *sc);
 
 #endif

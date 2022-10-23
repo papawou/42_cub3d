@@ -15,6 +15,10 @@
 		"utility": "c",
 		"vector": "c",
 		"ftmlx_quat.h": "c",
-		"ftmlx.h": "c"
+		"ftmlx.h": "c",
+		"ftmlx_color.h": "c",
+		"ftmlx_math.h": "c",
+		"ftmlx_vec.h": "c",
+		"algorithm": "c"
 	}
 }
