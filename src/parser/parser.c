@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/23 23:35:48 by kmendes           #+#    #+#             */
+/*   Updated: 2022/10/23 23:37:37 by kmendes          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <fcntl.h>
 
 #include "cub3D.h"
@@ -20,16 +32,13 @@ t_list	*get_parser_book(char *file_path)
 		print_error("open failed");
 		return (false);
 	}
-	line = NULL;
 	book = NULL;
-	tmp = NULL;
 	line = get_next_line(fd);
 	while (line)
 	{
 		tmp = ft_lstnew(line);
 		if (tmp == NULL)
 		{
-			print_error("ft_lstnew failed");
 			ft_lstclear(&book, free);
 			return (NULL);
 		}
@@ -39,16 +48,13 @@ t_list	*get_parser_book(char *file_path)
 	return (book);
 }
 
-_Bool parser(char *file_path, t_scene *sc)
+_Bool	parser(char *file_path, t_scene *sc)
 {
 	t_list	*book;
 
 	book = get_parser_book(file_path);
 	if (book == NULL)
-	{
-		print_error("get_parser_book");
 		return (false);
-	}
 	sc->map.len = parse_map_size(book);
 	sc->map.data = create_map(sc->map.len);
 	if (sc->map.data == NULL)
@@ -59,14 +65,10 @@ _Bool parser(char *file_path, t_scene *sc)
 	if (!parse_map(sc->map, &sc->player, book))
 	{
 		clean_parser(&book);
-		print_error("parse_map");
 		return (false);
 	}
 	clean_parser(&book);
 	if (!check_scene(sc))
-	{
-		print_error("check_scene");
 		return (false);
-	}
 	return (true);
 }

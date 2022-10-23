@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/23 23:45:38 by kmendes           #+#    #+#             */
+/*   Updated: 2022/10/23 23:46:02 by kmendes          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 _Bool	check_usage(int argc)
@@ -9,15 +21,16 @@ _Bool	check_usage(int argc)
 
 int	draw(t_scene *sc)
 {
-	ftmlx_fill_img(sc->canvas, (t_color) {255, 0, 0, 0});
+	ftmlx_fill_img(sc->canvas, (t_color){255, 0, 0, 0});
 	render_minimap(sc);
-	mlx_put_image_to_window(sc->ftmlx.mlx, sc->ftmlx.win, sc->canvas->img, 0, 0);
+	mlx_put_image_to_window(sc->ftmlx.mlx, sc->ftmlx.win,
+		sc->canvas->img, 0, 0);
 	return (0);
 }
 
 void	config_loop(t_scene *sc)
 {
-	t_mlx mlx;
+	t_mlx	mlx;
 
 	mlx = sc->ftmlx.mlx;
 	mlx_loop_hook(mlx, &draw, sc);

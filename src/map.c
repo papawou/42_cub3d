@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/23 23:46:08 by kmendes           #+#    #+#             */
+/*   Updated: 2022/10/23 23:46:23 by kmendes          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 void	clean_map(t_int_2d *map)
@@ -20,7 +32,7 @@ static void	reset_map(t_int_2d map)
 {
 	t_vec2	map_i;
 
-	map_i = (t_vec2) {0};
+	map_i = (t_vec2){0};
 	while (map_i.y < map.len.y)
 	{
 		map_i.x = 0;
@@ -58,6 +70,6 @@ int	**create_map(t_vec2 map_size)
 		}
 		++i;
 	}
-	reset_map((t_int_2d){.len= map_size, .data= map});
+	reset_map((t_int_2d){.len = map_size, .data = map});
 	return (map);
 }

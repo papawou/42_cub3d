@@ -3,7 +3,7 @@ NAME := cub3D
 CFLAGS := -Wall -Wextra -Werror
 DEBUG ?= 0
 ifeq ($(DEBUG), 1)
-CFLAGS += -Wno-unused-variable -g -fdiagnostics-color=always
+CFLAGS += -g -fdiagnostics-color=always
 endif
 
 LIBS := ./libs/mlx/libmlx.a ./libs/libft/libft.a

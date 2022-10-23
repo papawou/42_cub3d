@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   scene.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/23 23:46:26 by kmendes           #+#    #+#             */
+/*   Updated: 2022/10/23 23:46:33 by kmendes          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 void	clean_scene(t_scene *sc)
@@ -16,7 +28,7 @@ void	clean_scene(t_scene *sc)
 
 void	init_scene(t_scene *sc)
 {
-	*sc = (t_scene) {0};
+	*sc = (t_scene){0};
 	sc->player.pos = (t_fvec2){-1, -1};
 	if (ftmlx_init(SCREEN_WIDTH, SCREEN_HEIGHT, &sc->ftmlx))
 	{
