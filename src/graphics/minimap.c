@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:32:27 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/24 11:25:07 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/24 13:56:40 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,17 @@ static void	gen_minimap(t_scene *sc)
 
 void	render_minimap(t_scene *sc)
 {
+	t_fvec2	p_dir;
+
 	gen_minimap(sc);
 	ftmlx_put_circle((t_vec2){49, 49}, 5,
 		(t_color){179, 229, 252, 0}, sc->minimap);
+	p_dir = get_player_dir(sc);
+	p_dir.x *= 10;
+	p_dir.y *= 10;
+	ftmlx_put_bresen_line((t_vec2){49, 49},
+		(t_vec2){49 + p_dir.x, 49 + p_dir.y},
+		(t_color[2]){(t_color){0, 0, 0, 0}, (t_color){0, 0, 0, 0}},
+		sc->minimap);
 	ftmlx_img_put_img(sc->minimap, sc->canvas, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:28:01 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/24 00:16:47 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/24 13:58:03 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,18 @@ void		clean_scene(t_scene *sc);
 //format.c
 void		print_error(char *str);
 
-//atlas.c
-void		clean_atlas(t_mlx mlx, t_atlas *atlas);
+//controls.c
+int			controls_listener(int keycode, t_scene *sc);
+
+//player.c
+void		move_player(t_scene *sc, t_fvec2 move);
+void		rotate_player(t_scene *sc, t_quat rot);
+t_fvec2		get_player_dir(t_scene *sc);
 
 //GRAPHICS/*
 //	minimap.c
 void		render_minimap(t_scene *sc);
+//	atlas.c
+void		clean_atlas(t_mlx mlx, t_atlas *atlas);
 
 #endif
