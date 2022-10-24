@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec_2.c                                            :+:      :+:    :+:   */
+/*   fvec3_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmendes <kmendes@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 02:59:48 by kmendes           #+#    #+#             */
-/*   Updated: 2022/05/31 03:02:06 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/24 11:57:36 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,7 @@ t_fvec3	fvec3_cross(t_fvec3 a, t_fvec3 b)
 	return (cross);
 }
 
-t_fvec3	fvec3_minus(t_fvec3 a, t_fvec3 b)
+float	fvec3_magn(t_fvec3 v)
 {
-	t_fvec3	c;
-
-	c.x = a.x - b.x;
-	c.y = a.y - b.y;
-	c.z = a.z - b.z;
-	return (c);
+	return (sqrt(v.x * v.x + v.y * v.y + v.z * v.z));
 }

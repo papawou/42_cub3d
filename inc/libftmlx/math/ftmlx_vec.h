@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 03:13:33 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/23 23:27:29 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/24 12:01:20 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_aabb
 
 float	fvec4_magn(t_fvec4 v);
 t_fvec4	fvec4_norm(t_fvec4 v);
+
 t_fvec3	fvec3_inv(t_fvec3 v);
 t_fvec3	fvec3_add(t_fvec3 a, t_fvec3 b);
 float	fvec3_magn(t_fvec3 v);
@@ -76,5 +77,8 @@ t_fvec3	fvec3_norm(t_fvec3 v);
 float	fvec3_dot(t_fvec3 a, t_fvec3 b);
 t_fvec3	fvec3_cross(t_fvec3 a, t_fvec3 b);
 t_fvec3	fvec3_minus(t_fvec3 a, t_fvec3 b);
+
+t_fvec2	fvec2_add(t_fvec2 a, t_fvec2 b);
+t_fvec2	fvec2_minus(t_fvec2 a, t_fvec2 b);
 
 #endif
