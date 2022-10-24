@@ -19,6 +19,8 @@
 		"ftmlx_color.h": "c",
 		"ftmlx_math.h": "c",
 		"ftmlx_vec.h": "c",
-		"algorithm": "c"
+		"algorithm": "c",
+		"ftmlx_graphics.h": "c",
+		"ftmlx_print.h": "c"
 	}
 }
