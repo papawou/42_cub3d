@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:46:26 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/23 23:46:33 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/26 14:58:46 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	init_scene(t_scene *sc)
 		exit(1);
 	}
 	sc->canvas = ftmlx_new_img(sc->ftmlx.mlx, sc->ftmlx.wh.x, sc->ftmlx.wh.y);
-	sc->minimap = ftmlx_new_img(sc->ftmlx.mlx, 100, 100);
+	sc->minimap = ftmlx_new_img(sc->ftmlx.mlx, 300, 300);
 	if (sc->canvas == NULL || sc->minimap == NULL)
 	{
 		clean_scene(sc);

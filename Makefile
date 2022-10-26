@@ -15,6 +15,7 @@ SRCS := main.c map.c format.c scene.c controls.c player.c physics.c\
 		graphics/minimap.c graphics/atlas.c\
 		parser/parser.c	parser/parser_map.c parser/check_map.c parser/parser_clean.c\
 		gnl/get_next_line.c	gnl/get_next_line_utils.c\
+		debug/minimap.c
 
 SRCS += ftmlx/color/color.c ftmlx/ftmlx.c\
 ftmlx/graphics/cam.c ftmlx/graphics/print/put_line.c ftmlx/graphics/print/put_circle.c\

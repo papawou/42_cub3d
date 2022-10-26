@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:45:38 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/26 13:49:40 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/26 14:57:22 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ _Bool	check_usage(int argc)
 
 int	draw(t_scene *sc)
 {
-	ftmlx_fill_img(sc->canvas, (t_color){255, 0, 0, 0});
-	render_minimap(sc);
 	raycast(sc);
+
+	ftmlx_fill_img(sc->canvas, (t_color){255, 0, 0, 0});
+	ftmlx_fill_img(sc->minimap, (t_color){245, 124, 0, 0});
+	render_minimap(sc);
 	mlx_put_image_to_window(sc->ftmlx.mlx, sc->ftmlx.win,
 		sc->canvas->img, 0, 0);
 	return (0);

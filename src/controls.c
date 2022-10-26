@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 13:53:46 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/26 13:42:29 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/26 14:30:58 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #define XK_A 0
 #define XK_S 1
 #define XK_D 2
+#define XK_SPACE 49
 
 #define XK_LEFT 123
 #define XK_RIGHT 124
@@ -40,5 +41,8 @@ int	controls_listener(int keycode, t_scene *sc)
 		move_player(sc, (t_fvec2){0, -0.25});
 	else if (keycode == XK_S)
 		move_player(sc, (t_fvec2){0, 0.25});
+	else if (keycode == XK_SPACE)
+		debug_minimap(sc);
+
 	return (0);
 }

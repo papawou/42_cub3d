@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format.c                                           :+:      :+:    :+:   */
+/*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 23:45:34 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/26 14:31:07 by kmendes          ###   ########.fr       */
+/*   Created: 2022/10/26 14:29:38 by kmendes           #+#    #+#             */
+/*   Updated: 2022/10/26 14:35:44 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	print_error(char *str)
+void	debug_minimap(t_scene *sc)
 {
-	ft_putstr_fd(str, STDERR_FILENO);
-	ft_putstr_fd("\n", STDERR_FILENO);
+	tostring_map(&sc->map);
 }

@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:28:01 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/26 13:49:00 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/26 14:35:07 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void		exit_clean_parser(void);
 //map.c
 int			**create_map(t_vec2 map_size);
 void		clean_map(t_int_2d *map);
+void		tostring_map(t_int_2d *map);
 
 //scene.c
 void		init_scene(t_scene *sc);
@@ -110,5 +111,8 @@ void		clean_atlas(t_mlx mlx, t_atlas *atlas);
 
 //physics.c
 void		raycast(t_scene *sc);
+
+//minimap.c
+void	debug_minimap(t_scene *sc);
 
 #endif
