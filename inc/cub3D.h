@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:28:01 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/24 13:58:03 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/26 13:49:00 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct s_scene
 _Bool		parser(char *file_path, t_scene *sc);
 //	parser_map.c
 int			count_line_x_words(char *line);
-t_vec2		parse_map_size(t_list *book);
+t_vec2		parse_map_size(t_list *book); //faut fermer sa session :)
 _Bool		parse_map(t_int_2d map, t_obj *player, t_list *book);
 //	check_map.c
 _Bool		check_map(int **map, t_vec2 len);
@@ -107,5 +107,8 @@ t_fvec2		get_player_dir(t_scene *sc);
 void		render_minimap(t_scene *sc);
 //	atlas.c
 void		clean_atlas(t_mlx mlx, t_atlas *atlas);
+
+//physics.c
+void		raycast(t_scene *sc);
 
 #endif

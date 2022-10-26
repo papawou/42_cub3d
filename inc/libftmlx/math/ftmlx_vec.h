@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 03:13:33 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/24 12:01:20 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/26 13:48:50 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,7 @@ t_fvec3	fvec3_minus(t_fvec3 a, t_fvec3 b);
 
 t_fvec2	fvec2_add(t_fvec2 a, t_fvec2 b);
 t_fvec2	fvec2_minus(t_fvec2 a, t_fvec2 b);
+float	fvec2_magn(t_fvec2 v);
+t_fvec2	fvec2_norm(t_fvec2 v);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 13:56:48 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/24 13:57:09 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/26 13:49:29 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_fvec2	get_player_dir(t_scene *sc)
 	t_fvec3	dir;
 
 	dir = quat_mult_vec(sc->player.rot, (t_fvec3){0, 0, -1});
-	return ((t_fvec2){dir.x, dir.z});
+	return (fvec2_norm((t_fvec2){dir.x, dir.z}));
 }
 
 void	move_player(t_scene *sc, t_fvec2 move)

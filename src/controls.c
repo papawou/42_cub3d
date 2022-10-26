@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 13:53:46 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/24 13:57:37 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/26 13:42:29 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ int	controls_listener(int keycode, t_scene *sc)
 	else if (keycode == XK_RIGHT)
 		rotate_player(sc, axisg_to_quat((t_axisg){0, 1, 0, -10}));
 	else if (keycode == XK_A)
-		move_player(sc, (t_fvec2){-0.5, 0});
+		move_player(sc, (t_fvec2){-0.25, 0});
 	else if (keycode == XK_D)
-		move_player(sc, (t_fvec2){0.5, 0});
+		move_player(sc, (t_fvec2){0.25, 0});
 	else if (keycode == XK_W)
-		move_player(sc, (t_fvec2){0, -0.5});
+		move_player(sc, (t_fvec2){0, -0.25});
 	else if (keycode == XK_S)
-		move_player(sc, (t_fvec2){0, 0.5});
+		move_player(sc, (t_fvec2){0, 0.25});
 	return (0);
 }

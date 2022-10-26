@@ -11,7 +11,7 @@ LIBS_BIN := -framework OpenGL -framework AppKit -lm
 LIBSINC := -I./libs/mlx -I./libs/libft/inc
 INC := -I./inc
 
-SRCS := main.c map.c format.c scene.c controls.c player.c\
+SRCS := main.c map.c format.c scene.c controls.c player.c physics.c\
 		graphics/minimap.c graphics/atlas.c\
 		parser/parser.c	parser/parser_map.c parser/check_map.c parser/parser_clean.c\
 		gnl/get_next_line.c	gnl/get_next_line_utils.c\

@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:32:27 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/24 13:56:40 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/26 13:41:43 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static t_color	get_tile_color(t_scene *sc, t_vec2 pos)
 		return ((t_color){0, 255, 0, 0});
 	else if (tile == WALL)
 		return ((t_color){210, 105, 30, 0});
+	else if (tile == 2)
+		return ((t_color){0, 0, 255, 0});
 	return ((t_color){255, 20, 147, 0});
 }
 
