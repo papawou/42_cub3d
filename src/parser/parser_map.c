@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:38:21 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/23 23:47:47 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/28 15:22:59 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ _Bool	parse_player_pos(t_obj *player, t_vec2 map_pos, char dir)
 {
 	float	deg;
 
-	player->pos = (t_fvec2){map_pos.x + 0.5, map_pos.y + 0.5};
+	player->pos = (t_fvec2){map_pos.x, map_pos.y};
 	if (dir == 'N')
 		deg = 0;
 	else if (dir == 'S')

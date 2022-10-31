@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:28:01 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/26 14:35:07 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/29 00:32:06 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,24 @@
 
 # define SCREEN_WIDTH 1280
 # define SCREEN_HEIGHT 720
+
+//KEYSYM
+//mouse
+#define XK_LMB 1
+#define XK_RMB 2
+//KB
+#define XK_ESC 100
+#define XK_Q 12
+#define XK_W 13
+#define XK_E 14
+#define XK_A 0
+#define XK_S 1
+#define XK_D 2
+#define XK_SPACE 49
+#define XK_LEFT 123
+#define XK_RIGHT 124
+#define XK_UP 126
+#define XK_DOWN 125
 
 enum e_tile
 {
@@ -60,6 +78,16 @@ typedef struct s_int_2d
 	int		**data;
 }	t_int_2d;
 
+typedef struct s_debug_physics
+{
+	t_vec2 target_pos;
+	t_vec2	player_pos;
+	
+	t_fvec2 raycast_hit;
+	
+	t_int_2d map;
+} t_debug_physics;
+
 typedef struct s_scene
 {
 	t_obj		player;
@@ -68,6 +96,7 @@ typedef struct s_scene
 	t_img		*canvas;
 	t_img		*minimap;
 	t_atlas		atlas;
+	t_debug_physics debug_physics;
 }	t_scene;
 
 //PARSER/*
@@ -112,7 +141,11 @@ void		clean_atlas(t_mlx mlx, t_atlas *atlas);
 //physics.c
 void		raycast(t_scene *sc);
 
-//minimap.c
+//DEBUG/*
+//	minimap.c
 void	debug_minimap(t_scene *sc);
+
+//	physics.c
+void	init_debug_physics(t_scene *sc);
 
 #endif

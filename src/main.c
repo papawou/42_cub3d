@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:45:38 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/26 14:57:22 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/28 23:29:36 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int	main(int argc, char **argv)
 		print_error("wrong_parser");
 		return (1);
 	}
-	config_loop(&sc);
+	//config_loop(&sc);
+	init_debug_physics(&sc);
 	mlx_loop(sc.ftmlx.mlx);
 	clean_scene(&sc);
 	return (0);

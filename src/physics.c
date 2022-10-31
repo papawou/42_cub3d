@@ -6,12 +6,30 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:04:06 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/26 13:57:36 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/10/28 22:31:44 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 #include <stdio.h>
+
+static void	reset_raycast_case(t_int_2d *map)
+{
+	t_vec2 map_i;
+
+	map_i = (t_vec2){0};
+	while (map_i.y < map->len.y)
+	{
+		map_i.x = 0;
+		while (map_i.x < map->len.x)
+		{
+			if (map->data[map_i.y][map_i.x] == 2)
+				map->data[map_i.y][map_i.x] = 1;
+			++map_i.x;
+		}
+		++map_i.y;
+	}
+}
 
 void	raycast(t_scene *sc)
 {
@@ -28,8 +46,8 @@ void	raycast(t_scene *sc)
 	if (ray_dir.y < 0)
 		step.y = -1;
 	t_vec2 curr_cell = ray_start;
-	i_y = 0;
-	i_x = 0;
+	i_y = 1;
+	i_x = 1;
 
 	while (sc->map.data[curr_cell.y][curr_cell.x] < 1 &&
 		0 <= curr_cell.x && curr_cell.x < sc->map.len.x &&
@@ -42,9 +60,10 @@ void	raycast(t_scene *sc)
 		}
 		else
 		{
-			++i_y;
 			curr_cell.y += step.y;
+			++i_y;
 		}
 	}
+	reset_raycast_case(&sc->map);
 	sc->map.data[curr_cell.y][curr_cell.x] = 2;
 }
