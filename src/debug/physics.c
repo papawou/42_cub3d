@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:43:42 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/01 07:44:46 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/01 12:12:37 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,54 +15,93 @@
 #define DEBUG_MAP_X 10
 #define DEBUG_MAP_Y 10
 
-static void	debug_physics_raycast(t_scene *sc)
+/*
+static void	debug_physics_raycast_screen(t_scene *sc)
 {
-	double			i_y, i_x;
-	double			sx, sy;
-	t_vec2			mouse_pos;
-	t_fvec2			ray_dir, ray_start;
-	t_vec2			step;
-	t_vec2			curr_cell;
-	double			trash;
+	t_vec2	mouse_pos;
+	int			x;
 
+	x = 0;
 	mlx_mouse_get_pos(sc->ftmlx.win, &mouse_pos.x, &mouse_pos.y);
 	
-	ray_dir = fvec2_norm(fvec2_minus((t_fvec2) {(float)mouse_pos.x / DEBUG_MAP_X, (float)mouse_pos.y / DEBUG_MAP_Y}, sc->player.pos));
-	ray_start = (t_fvec2){sc->player.pos.x, sc->player.pos.y};
-	sx = sqrt(1 + pow((double)ray_dir.y / ray_dir.x, 2));
-	sy = sqrt(1 + pow((double)ray_dir.x / ray_dir.y, 2));
+	t_fvec2 dir = fvec2_norm(fvec2_minus((t_fvec2) {(float)mouse_pos.x / DEBUG_MAP_X, (float)mouse_pos.y / DEBUG_MAP_Y}, sc->player.pos));
+	t_quat rot = axisg_to_quat((t_axisg){0, 1, 0, rad_to_deg(atan2(dir.y, dir.x))});
+	
+	while (x < SCREEN_WIDTH)
+	{
+		float cam_x = 2 * ((double) x / SCREEN_WIDTH) - 1;
+		t_fvec2 ray_dir;
+		ray_dir.x = dir.x + plane.x * cam.x;
+		ray_dir.y = dir.y + plane.y * cam.x;
+		//debug_physics_raycast()
+		++x;
+	}
+}
+*/
+static void	debug_physics_raycast(t_scene *sc)
+{
+	t_fvec2		s;
+	t_fvec2		ray_dir, ray_dir_test;
+	t_vec2		step;
+	t_vec2		curr_cell;
+	t_fvec2		d;
+	int				side;
+	t_vec2		mouse_pos;
+	
+	mlx_mouse_get_pos(sc->ftmlx.win, &mouse_pos.x, &mouse_pos.y);
+	ray_dir_test = fvec2_norm(fvec2_minus((t_fvec2) {(float)mouse_pos.x / DEBUG_MAP_X, (float)mouse_pos.y / DEBUG_MAP_Y}, sc->player.pos));
+	
+	t_quat rot = axisg_to_quat((t_axisg){0, 0, 1, rad_to_deg(atan2(ray_dir_test.y, ray_dir_test.x))});
+	t_fvec3 tmp = quat_mult_vec(rot, (t_fvec3){1, 0, 0});
+	ray_dir = fvec2_norm((t_fvec2){tmp.x, tmp.y});
+	
+	if (ray_dir.x == 0)
+		d.x = 1e30;
+	else
+		d.x = fabsf(1 / ray_dir.x);
+	if (ray_dir.y == 0)
+		d.y = 1e30;
+	else
+		d.y = fabsf(1 / ray_dir.y);
 	step = (t_vec2){1, 1};
-	curr_cell = (t_vec2) {(int)ray_start.x, (int)ray_start.y};
+	curr_cell = (t_vec2){(int)sc->player.pos.x, (int)sc->player.pos.y};
 	
 	if (ray_dir.x < 0)
 	{
-		i_x = modf(sc->player.pos.x, &trash);
 		step.x = -1;
+		s.x = (sc->player.pos.x - curr_cell.x) * d.x;
 	}
 	else
-		i_x = 1 - modf(sc->player.pos.x, &trash);
+	{
+		step.x = 1;
+		s.x = (curr_cell.x + 1 - sc->player.pos.x) * d.x;
+	}
 	if (ray_dir.y < 0)
 	{
-		i_y = modf(sc->player.pos.y, &trash);
 		step.y = -1;
+		s.y = (sc->player.pos.y - curr_cell.y) * d.y;
 	}
 	else
-		i_y = 1 - modf(sc->player.pos.y, &trash);
-	
+	{
+		step.y = 1;
+		s.y = (curr_cell.y + 1 - sc->player.pos.y) * d.y;
+	}
 	
 	while (0 <= curr_cell.x && curr_cell.x < sc->debug_physics.map.len.x &&
 		0 <= curr_cell.y && curr_cell.y < sc->debug_physics.map.len.y &&
 		sc->debug_physics.map.data[curr_cell.y][curr_cell.x] < 1)
 	{
-		if (i_x * sx < i_y * sy)
+		if (s.x < s.y)
 		{
+			s.x += d.x;
 			curr_cell.x += step.x;
-			++i_x;
+			side = 0;
 		}
 		else
 		{
+			s.y += d.y;
 			curr_cell.y += step.y;
-			++i_y;
+			side = 1;
 		}
 	}
 	
@@ -95,6 +134,7 @@ int	debug_physics_mouse_hook(int button, int x, int y, t_scene *sc)
 	return (0);
 }
 
+#include <stdio.h>
 int	debug_physics_controls_listener(int keycode, t_scene *sc)
 {
 	if (keycode == XK_LEFT)
@@ -111,10 +151,6 @@ int	debug_physics_controls_listener(int keycode, t_scene *sc)
 		move_player(sc, (t_fvec2){0, 0.22});
 	else if (keycode == XK_SPACE)
 	{
-		t_vec2	mouse_pos;
-
-		mlx_mouse_get_pos(sc->ftmlx.win, &mouse_pos.x, &mouse_pos.y);
-		sc->debug_physics.map.data[mouse_pos.y][mouse_pos.x] = 1;
 	}
 	return (0);
 }
@@ -158,6 +194,7 @@ void	debug_physics_draw_map(t_scene *sc)
 		++map_i.y;
 	}
 }
+
 
 void	debug_physics_draw_game(t_scene *sc)
 {
