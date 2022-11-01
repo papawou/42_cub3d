@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:43:42 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/31 22:21:40 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/01 07:44:46 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,17 @@ static void	debug_physics_raycast(t_scene *sc)
 	t_fvec2			ray_dir, ray_start;
 	t_vec2			step;
 	t_vec2			curr_cell;
+	double			trash;
 
 	mlx_mouse_get_pos(sc->ftmlx.win, &mouse_pos.x, &mouse_pos.y);
-	ray_dir = fvec2_norm(fvec2_minus((t_fvec2) {(float)mouse_pos.x / DEBUG_MAP_X, (float)mouse_pos.y / DEBUG_MAP_Y},
-		sc->player.pos));
+	
+	ray_dir = fvec2_norm(fvec2_minus((t_fvec2) {(float)mouse_pos.x / DEBUG_MAP_X, (float)mouse_pos.y / DEBUG_MAP_Y}, sc->player.pos));
 	ray_start = (t_fvec2){sc->player.pos.x, sc->player.pos.y};
 	sx = sqrt(1 + pow((double)ray_dir.y / ray_dir.x, 2));
 	sy = sqrt(1 + pow((double)ray_dir.x / ray_dir.y, 2));
 	step = (t_vec2){1, 1};
-	double trash;
+	curr_cell = (t_vec2) {(int)ray_start.x, (int)ray_start.y};
+	
 	if (ray_dir.x < 0)
 	{
 		i_x = modf(sc->player.pos.x, &trash);
@@ -46,7 +48,8 @@ static void	debug_physics_raycast(t_scene *sc)
 	}
 	else
 		i_y = 1 - modf(sc->player.pos.y, &trash);
-	curr_cell = (t_vec2) {(int)ray_start.x, (int)ray_start.y};
+	
+	
 	while (0 <= curr_cell.x && curr_cell.x < sc->debug_physics.map.len.x &&
 		0 <= curr_cell.y && curr_cell.y < sc->debug_physics.map.len.y &&
 		sc->debug_physics.map.data[curr_cell.y][curr_cell.x] < 1)
@@ -62,9 +65,10 @@ static void	debug_physics_raycast(t_scene *sc)
 			++i_y;
 		}
 	}
-	{
-		t_vec2 map_i;
-		t_int_2d *map = &sc->debug_physics.map;
+	
+	{ //reset prev hit wall
+		t_vec2		map_i;
+		t_int_2d	*map = &sc->debug_physics.map;
 		map_i = (t_vec2){0};
 		while (map_i.y < map->len.y)
 		{
@@ -78,6 +82,7 @@ static void	debug_physics_raycast(t_scene *sc)
 			++map_i.y;
 		}
 	}
+	
 	sc->debug_physics.map.data[curr_cell.y][curr_cell.x] = 2;
 }
 
@@ -106,7 +111,7 @@ int	debug_physics_controls_listener(int keycode, t_scene *sc)
 		move_player(sc, (t_fvec2){0, 0.22});
 	else if (keycode == XK_SPACE)
 	{
-		t_vec2 mouse_pos;
+		t_vec2	mouse_pos;
 
 		mlx_mouse_get_pos(sc->ftmlx.win, &mouse_pos.x, &mouse_pos.y);
 		sc->debug_physics.map.data[mouse_pos.y][mouse_pos.x] = 1;
@@ -156,11 +161,11 @@ void	debug_physics_draw_map(t_scene *sc)
 
 void	debug_physics_draw_game(t_scene *sc)
 {
-	t_vec2 mouse_pos;
+	t_vec2	mouse_pos;
 
 	mlx_mouse_get_pos(sc->ftmlx.win, &mouse_pos.x, &mouse_pos.y);
 	ftmlx_put_circle((t_vec2){sc->player.pos.x * DEBUG_MAP_X, sc->player.pos.y * DEBUG_MAP_Y}, 2, (t_color) {255, 255, 0, 0}, sc->canvas);
-	ftmlx_put_circle(mouse_pos, 5, (t_color) {0, 255, 255, 0}, sc->canvas);
+	ftmlx_put_circle(mouse_pos, 3, (t_color) {0, 255, 255, 0}, sc->canvas);
 	ftmlx_put_bresen_line((t_vec2){sc->player.pos.x * DEBUG_MAP_X, sc->player.pos.y * DEBUG_MAP_Y}, mouse_pos,
 		(t_color[2]) {{255, 255, 255, 0}, {255, 255, 255, 0}}, sc->canvas);
 	debug_physics_raycast(sc);
