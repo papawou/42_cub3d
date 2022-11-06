@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:46:08 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/06 16:25:35 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/06 17:03:46 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 void	tostring_map(t_int_2d *map)
 {
-	t_vec2 i;
+	t_vec2	i;
 
-	i = (t_vec2) {0};
+	i = (t_vec2){0};
 	while (i.y < map->len.y)
 	{
 		i.x = 0;

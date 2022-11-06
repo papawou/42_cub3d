@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:04:06 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/06 16:51:21 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/06 17:04:02 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_fvec3	raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc)
 	t_vec2		step;
 	t_vec2		curr_cell;
 	int				side;
-	double			wall_dist;
+	double		wall_dist;
 
 	if (ray_dir.x == 0)
 		d.x = 1e30;

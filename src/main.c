@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:45:38 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/06 16:51:45 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/06 17:00:08 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,14 @@ _Bool	check_usage(int argc)
 int	logic(t_scene *sc)
 {
 	reset_map(sc->map, true);
-
-	t_fvec3 ray_rest = raycast(sc->player.pos, get_player_dir(sc), sc);
-	sc->map.data[(int)ray_rest.y][(int)ray_rest.x] = 2;
 	return (0);
 }
 
 int	draw(t_scene *sc)
 {
 	logic(sc);
-
 	ftmlx_fill_img(sc->canvas, (t_color){255, 0, 0, 0});
 	ftmlx_fill_img(sc->minimap, (t_color){245, 124, 0, 0});
-
 	render_raycast(sc);
 	render_minimap(sc);
 	mlx_put_image_to_window(sc->ftmlx.mlx, sc->ftmlx.win,
