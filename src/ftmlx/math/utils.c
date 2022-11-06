@@ -6,13 +6,13 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 14:12:53 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/23 17:21:03 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/03 16:45:20 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftmlx/math/ftmlx_vec.h"
 
-float	ft_clamp(float min, float max, float value)
+double	ft_clamp(double min, double max, double value)
 {
 	if (value < min)
 		return (min);
@@ -21,17 +21,17 @@ float	ft_clamp(float min, float max, float value)
 	return (value);
 }
 
-float	ft_lerp(float start, float end, float alpha)
+double	ft_lerp(double start, double end, double alpha)
 {
 	return ((1 - alpha) * start + alpha * end);
 }
 
-float	ft_invlerp(float start, float end, float value)
+double	ft_invlerp(double start, double end, double value)
 {
 	return ((value - start) / (end - start));
 }
 
-float	ft_remap(t_fvec2 in, t_fvec2 out, float value)
+double	ft_remap(t_fvec2 in, t_fvec2 out, double value)
 {
 	return (ft_lerp(out.x, out.y, ft_invlerp(in.x, in.y, value)));
 }

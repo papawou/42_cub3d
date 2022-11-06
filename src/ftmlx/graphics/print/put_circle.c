@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 00:24:35 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/24 11:11:29 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/03 16:45:20 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ftmlx_check_box(t_aabb *box, int width, int height)
 
 void	ftmlx_put_circle(t_vec2 pos, int rad, t_color c, t_img *canvas)
 {
-	float	dst;
+	double	dst;
 	t_aabb	box;
 
 	box = (t_aabb){.a = {pos.x - rad, pos.y - rad},

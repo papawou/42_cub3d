@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:38:21 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/28 15:22:59 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/06 16:21:09 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,20 @@ t_vec2	parse_map_size(t_list *book)
 
 _Bool	parse_player_pos(t_obj *player, t_vec2 map_pos, char dir)
 {
-	float	deg;
+	double	deg;
 
 	player->pos = (t_fvec2){map_pos.x, map_pos.y};
 	if (dir == 'N')
-		deg = 0;
-	else if (dir == 'S')
-		deg = 180;
-	else if (dir == 'E')
 		deg = -90;
-	else if (dir == 'W')
+	else if (dir == 'S')
 		deg = 90;
+	else if (dir == 'E')
+		deg = -180;
+	else if (dir == 'W')
+		deg = 0;
 	else
 		return (false);
-	player->rot = axisg_to_quat((t_axisg){0, 1, 0, deg});
+	player->rot = axisg_to_quat((t_axisg){0, 0, 1, deg});
 	return (true);
 }
 

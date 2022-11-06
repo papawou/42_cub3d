@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmendes <kmendes@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 01:56:49 by kmendes           #+#    #+#             */
-/*   Updated: 2022/09/06 21:01:07 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/03 16:45:20 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static void	plot_loop_x(t_bresen_vars *v, t_color c[2], t_img *canvas)
 	while (v->i < v->range)
 	{
 		if (v->swap)
-			c_pt = ftmlx_lerp_color(c[1], c[0], (float)v->i / v->range);
+			c_pt = ftmlx_lerp_color(c[1], c[0], (double)v->i / v->range);
 		else
-			c_pt = ftmlx_lerp_color(c[0], c[1], (float)v->i / v->range);
+			c_pt = ftmlx_lerp_color(c[0], c[1], (double)v->i / v->range);
 		ftmlx_img_set_pxl_color(canvas, v->pt.x + v->i, v->pt.y,
 			ftmlx_get_color_int(c_pt));
 		v->offset += v->delta;
@@ -88,9 +88,9 @@ static void	plot_loop_y(t_bresen_vars *v, t_color c[2], t_img *canvas)
 	while (v->i < v->range)
 	{
 		if (v->swap)
-			c_pt = ftmlx_lerp_color(c[1], c[0], (float)v->i / v->range);
+			c_pt = ftmlx_lerp_color(c[1], c[0], (double)v->i / v->range);
 		else
-			c_pt = ftmlx_lerp_color(c[0], c[1], (float)v->i / v->range);
+			c_pt = ftmlx_lerp_color(c[0], c[1], (double)v->i / v->range);
 		ftmlx_img_set_pxl_color(canvas, v->pt.x, v->pt.y + v->i,
 			ftmlx_get_color_int(c_pt));
 		v->offset += v->delta;
@@ -128,14 +128,14 @@ static void	plot_line_y(t_bresen_params *p, t_color c[2], t_img *canvas)
 
 void	ftmlx_put_bresen_line(t_vec2 a, t_vec2 b, t_color c[2], t_img *canvas)
 {
-	float			m;
+	double			m;
 	t_bresen_params	p;
 
 	p.a = a;
 	p.b = b;
 	p.rise = p.b.y - p.a.y;
 	p.run = p.b.x - p.a.x;
-	m = (float)p.rise / p.run;
+	m = (double)p.rise / p.run;
 	p.adjust = 1;
 	if (m < 0)
 		p.adjust = -1;

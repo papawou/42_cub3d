@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:45:38 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/28 23:29:36 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/06 16:51:45 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,23 @@ _Bool	check_usage(int argc)
 	return (true);
 }
 
+int	logic(t_scene *sc)
+{
+	reset_map(sc->map, true);
+
+	t_fvec3 ray_rest = raycast(sc->player.pos, get_player_dir(sc), sc);
+	sc->map.data[(int)ray_rest.y][(int)ray_rest.x] = 2;
+	return (0);
+}
+
 int	draw(t_scene *sc)
 {
-	raycast(sc);
+	logic(sc);
 
 	ftmlx_fill_img(sc->canvas, (t_color){255, 0, 0, 0});
 	ftmlx_fill_img(sc->minimap, (t_color){245, 124, 0, 0});
+
+	render_raycast(sc);
 	render_minimap(sc);
 	mlx_put_image_to_window(sc->ftmlx.mlx, sc->ftmlx.win,
 		sc->canvas->img, 0, 0);
@@ -57,8 +68,7 @@ int	main(int argc, char **argv)
 		print_error("wrong_parser");
 		return (1);
 	}
-	//config_loop(&sc);
-	init_debug_physics(&sc);
+	config_loop(&sc);
 	mlx_loop(sc.ftmlx.mlx);
 	clean_scene(&sc);
 	return (0);

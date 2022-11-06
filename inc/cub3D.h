@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:28:01 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/29 00:32:06 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/06 16:51:41 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ enum e_tile
 {
 	EMPTY = -1,
 	GROUND = 0,
-	WALL = 1
+	WALL = 1,
+	WALL_HIT = 2
 };
 
 typedef struct s_obj
@@ -78,16 +79,6 @@ typedef struct s_int_2d
 	int		**data;
 }	t_int_2d;
 
-typedef struct s_debug_physics
-{
-	t_vec2 target_pos;
-	t_vec2	player_pos;
-	
-	t_fvec2 raycast_hit;
-	
-	t_int_2d map;
-} t_debug_physics;
-
 typedef struct s_scene
 {
 	t_obj		player;
@@ -96,7 +87,6 @@ typedef struct s_scene
 	t_img		*canvas;
 	t_img		*minimap;
 	t_atlas		atlas;
-	t_debug_physics debug_physics;
 }	t_scene;
 
 //PARSER/*
@@ -104,7 +94,7 @@ typedef struct s_scene
 _Bool		parser(char *file_path, t_scene *sc);
 //	parser_map.c
 int			count_line_x_words(char *line);
-t_vec2		parse_map_size(t_list *book); //faut fermer sa session :)
+t_vec2		parse_map_size(t_list *book); //faut fermer sa session :) //sacripan !
 _Bool		parse_map(t_int_2d map, t_obj *player, t_list *book);
 //	check_map.c
 _Bool		check_map(int **map, t_vec2 len);
@@ -115,6 +105,7 @@ void		exit_clean_parser(void);
 int			**create_map(t_vec2 map_size);
 void		clean_map(t_int_2d *map);
 void		tostring_map(t_int_2d *map);
+void		reset_map(t_int_2d map, _Bool only_wall);
 
 //scene.c
 void		init_scene(t_scene *sc);
@@ -137,15 +128,10 @@ t_fvec2		get_player_dir(t_scene *sc);
 void		render_minimap(t_scene *sc);
 //	atlas.c
 void		clean_atlas(t_mlx mlx, t_atlas *atlas);
+//	raycast.c
+void render_raycast(t_scene *sc);
 
 //physics.c
-void		raycast(t_scene *sc);
-
-//DEBUG/*
-//	minimap.c
-void	debug_minimap(t_scene *sc);
-
-//	physics.c
-void	init_debug_physics(t_scene *sc);
+t_fvec3	raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc);
 
 #endif

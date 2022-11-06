@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 02:48:06 by kmendes           #+#    #+#             */
-/*   Updated: 2022/06/01 13:19:45 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/03 16:45:20 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ t_quat	axisg_to_quat(t_axisg ag)
 t_mat4	euler_to_mat(t_euler v)
 {
 	t_mat4	mat;
-	float	x;
-	float	y;
-	float	z;
+	double	x;
+	double	y;
+	double	z;
 
 	x = v.x;
 	y = v.y;
@@ -47,12 +47,12 @@ t_mat4	euler_to_mat(t_euler v)
 
 typedef struct s_euler_to_quat_vars
 {
-	float	cz;
-	float	sz;
-	float	cy;
-	float	sy;
-	float	cx;
-	float	sx;
+	double	cz;
+	double	sz;
+	double	cy;
+	double	sy;
+	double	cx;
+	double	sx;
 }	t_euler_to_quat_vars;
 
 t_quat	euler_to_quat(t_euler v)
