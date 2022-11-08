@@ -6,14 +6,14 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:04:06 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/06 17:04:02 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/06 17:38:17 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 #include <stdio.h>
 
-t_fvec3	raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc)
+t_fvec4	raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc)
 {
 	t_fvec2		s;
 	t_fvec2		d;
@@ -73,5 +73,5 @@ t_fvec3	raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc)
 		wall_dist = s.x - d.x;
 	else
 		wall_dist = s.y - d.y;
-	return ((t_fvec3) {curr_cell.x, curr_cell.y, wall_dist});
+	return ((t_fvec4) {curr_cell.x, curr_cell.y, wall_dist, side});
 }

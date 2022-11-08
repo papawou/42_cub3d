@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:38:21 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/06 16:21:09 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/06 17:50:08 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ _Bool	parse_player_pos(t_obj *player, t_vec2 map_pos, char dir)
 {
 	double	deg;
 
-	player->pos = (t_fvec2){map_pos.x, map_pos.y};
+	player->pos = (t_fvec2){map_pos.x + 0.5, map_pos.y + 0.5};
 	if (dir == 'N')
 		deg = -90;
 	else if (dir == 'S')
 		deg = 90;
 	else if (dir == 'E')
-		deg = -180;
-	else if (dir == 'W')
 		deg = 0;
+	else if (dir == 'W')
+		deg = 180;
 	else
 		return (false);
 	player->rot = axisg_to_quat((t_axisg){0, 0, 1, deg});

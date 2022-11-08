@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:50:49 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/06 17:03:11 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/06 17:57:34 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	render_raycast(t_scene *sc)
 	t_fvec2	ray_dir;
 	double	cam_x;
 	t_fvec3	plane;
-	t_fvec3	ret;
+	t_fvec4	ret;
 	t_color	c;
 
 	dir = get_player_dir(sc);
-	plane = quat_mult_vec(sc->player.rot, (t_fvec3){0, 0.66, 0});
+	plane = quat_mult_vec(sc->player.rot, (t_fvec3){0, 0.9, 0});
 	x = 0;
 	while (x < SCREEN_WIDTH)
 	{

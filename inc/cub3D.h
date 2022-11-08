@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:28:01 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/06 16:51:41 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/06 17:38:56 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,6 @@ void		clean_atlas(t_mlx mlx, t_atlas *atlas);
 void render_raycast(t_scene *sc);
 
 //physics.c
-t_fvec3	raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc);
+t_fvec4	raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc);
 
 #endif
