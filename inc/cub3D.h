@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:28:01 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/06 17:38:56 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/08 21:37:30 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,11 @@ typedef struct s_atlas
 {
 	t_color	floor;
 	t_color	ceil;
-	t_img	*text_no;
-	t_img	*text_so;
-	t_img	*text_we;
-	t_img	*text_ea;
+	t_img	*tex;
+	t_img	*tex_no;
+	t_img	*tex_so;
+	t_img	*tex_we;
+	t_img	*tex_ea;
 }	t_atlas;
 
 typedef struct s_int_2d

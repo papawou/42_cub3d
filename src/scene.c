@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:46:26 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/26 14:58:46 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/08 19:58:47 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	init_scene(t_scene *sc)
 	}
 	sc->canvas = ftmlx_new_img(sc->ftmlx.mlx, sc->ftmlx.wh.x, sc->ftmlx.wh.y);
 	sc->minimap = ftmlx_new_img(sc->ftmlx.mlx, 300, 300);
+	sc->atlas.floor = (t_color){0, 255, 255, 0};
+	sc->atlas.ceil = (t_color){255, 178, 102, 0};
 	if (sc->canvas == NULL || sc->minimap == NULL)
 	{
 		clean_scene(sc);

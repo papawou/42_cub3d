@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:45:38 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/06 17:00:08 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/08 22:49:17 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	config_loop(t_scene *sc)
 	t_mlx	mlx;
 
 	mlx = sc->ftmlx.mlx;
-	mlx_key_hook(sc->ftmlx.win, &controls_listener, sc);
+	//mlx_key_hook(sc->ftmlx.win, &controls_listener, sc);
+	mlx_hook(sc->ftmlx.win, 2, 1L<<1, &controls_listener, sc);
 	mlx_loop_hook(mlx, &draw, sc);
 }
 

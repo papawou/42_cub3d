@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 13:56:48 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/08 15:29:45 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/08 20:32:55 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,23 @@ void	move_player(t_scene *sc, t_fvec2 move)
 	t_fvec4	ray_res;
 
 	incr_pos = quat_mult_vec(sc->player.rot, (t_fvec3){move.x, move.y, 0});
-	
-	//x
 	if (incr_pos.x != 0.0)
 	{
 		ray_res = raycast(sc->player.pos, fvec2_norm((t_fvec2){incr_pos.x, 0}), sc);
 		if (ray_res.z <= 0.11)
 			incr_pos.x = 0;
 		else if ((ray_res.z - 0.11) < ft_fabs(incr_pos.x))
-			incr_pos.x = ((incr_pos.x < 0.0) * -1 + (incr_pos.x >= 0.0) * 1) * (ray_res.z - 0.11);
+			incr_pos.x = ((incr_pos.x < 0.0) * (-1)
+				+ (incr_pos.x >= 0.0) * 1) * (ray_res.z - 0.11);
 	}
-	
-	//y
 	if (incr_pos.y != 0.0)
 	{
 		ray_res = raycast(sc->player.pos, fvec2_norm((t_fvec2){0, incr_pos.y}), sc);
 		if (ray_res.z <= 0.11)
 			incr_pos.y = 0;
 		else if ((ray_res.z) - 0.11 < ft_fabs(incr_pos.y))
-			incr_pos.y = ((incr_pos.y < 0.0) * -1 + (incr_pos.y >= 0.0) * 1) * (ray_res.z - 0.11);
+			incr_pos.y = ((incr_pos.y < 0.0) * -1 +
+				(incr_pos.y >= 0.0) * 1) * (ray_res.z - 0.11);
 	}
 	sc->player.pos = fvec2_add(sc->player.pos, (t_fvec2){incr_pos.x, incr_pos.y});
 }
