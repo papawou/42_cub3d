@@ -6,13 +6,11 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:32:27 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/06 17:30:13 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/09 16:42:37 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-#define MINIMAP_TILE_SIZE_X 10
 
 static t_color	get_tile_color(t_int_2d map, t_fvec2 pos)
 {
@@ -33,7 +31,7 @@ static t_color	get_tile_color(t_int_2d map, t_fvec2 pos)
 	return ((t_color){255, 20, 147, 0});
 }
 
-static void	gen_minimap(t_scene *sc)
+typedef struct s_vars_gen_minimap
 {
 	t_fvec2	map_dst;
 	t_faabb	box;
@@ -41,31 +39,34 @@ static void	gen_minimap(t_scene *sc)
 	double	ratio;
 	double	max_x;
 	t_vec2	pxl;
+}	t_vars_gen_minimap;
 
-	ratio = (double)sc->minimap->height / sc->minimap->width;
-	max_x = MINIMAP_TILE_SIZE_X;
-	box = (t_faabb){
-		.a = (t_fvec2){sc->player.pos.x - max_x,
-		sc->player.pos.y - (ratio * max_x)},
-		.b = (t_fvec2){sc->player.pos.x + max_x,
-		sc->player.pos.y + (ratio * max_x)}
-	};
-	pxl = (t_vec2){0};
-	while (pxl.y < sc->minimap->height)
+static void	gen_minimap(t_scene *sc)
+{
+	t_vars_gen_minimap	v;
+
+	v.ratio = (double)sc->minimap->height / sc->minimap->width;
+	v.max_x = sc->minimap->width / 20;
+	v.box = (t_faabb){.a = (t_fvec2){sc->player.pos.x - v.max_x,
+		sc->player.pos.y - (v.ratio * v.max_x)},
+		.b = (t_fvec2){sc->player.pos.x + v.max_x,
+		sc->player.pos.y + (v.ratio * v.max_x)}};
+	v.pxl = (t_vec2){0};
+	while (v.pxl.y < sc->minimap->height)
 	{
-		pxl.x = 0;
-		while (pxl.x < sc->minimap->width)
+		v.pxl.x = 0;
+		while (v.pxl.x < sc->minimap->width)
 		{
-			map_dst.x = ft_remap((t_fvec2){0, sc->minimap->width - 1},
-					(t_fvec2){box.a.x, box.b.x}, pxl.x);
-			map_dst.y = ft_remap((t_fvec2){0, sc->minimap->height - 1},
-					(t_fvec2){box.a.y, box.b.y}, pxl.y);
-			pxl_color = get_tile_color(sc->map, map_dst);
-			ftmlx_img_set_pxl_color(sc->minimap, pxl.x, pxl.y,
-				ftmlx_get_color_int(pxl_color));
-			++pxl.x;
+			v.map_dst.x = ft_remap((t_fvec2){0, sc->minimap->width - 1},
+					(t_fvec2){v.box.a.x, v.box.b.x}, v.pxl.x);
+			v.map_dst.y = ft_remap((t_fvec2){0, sc->minimap->height - 1},
+					(t_fvec2){v.box.a.y, v.box.b.y}, v.pxl.y);
+			v.pxl_color = get_tile_color(sc->map, v.map_dst);
+			ftmlx_img_set_pxl_color(sc->minimap, v.pxl.x, v.pxl.y,
+				ftmlx_get_color_int(v.pxl_color));
+			++v.pxl.x;
 		}
-		++pxl.y;
+		++v.pxl.y;
 	}
 }
 

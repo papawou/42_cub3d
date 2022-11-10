@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:50:49 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/09 10:09:47 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/10 00:51:58 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static void	draw_stripe(t_fvec4 ray_res, t_fvec2 ray_dir, int x, t_scene *sc)
 	int			line_height;
 	int			draw_start;
 	int			draw_end;
-	t_color	c;
-	
+	t_color		c;
+
 	(void) ray_dir;
 	line_height = (int)(SCREEN_HEIGHT / ray_res.z);
 	draw_start = -line_height / 2 + SCREEN_HEIGHT / 2;
@@ -64,7 +64,6 @@ static void	draw_stripe(t_fvec4 ray_res, t_fvec2 ray_dir, int x, t_scene *sc)
 	c = (t_color){255, 255, 0, 0};
 	ftmlx_put_bresen_line((t_vec2){x, draw_start}, (t_vec2){x, draw_end},
 		(t_color[2]){c, c}, sc->canvas);
-	//draw_wall(ray_res, ray_dir, (t_vec2){draw_start, draw_end}, sc);
 	if (draw_start != 0)
 		ftmlx_put_bresen_line((t_vec2){x, 0}, (t_vec2){x, draw_start - 1},
 			(t_color[2]){sc->atlas.floor, sc->atlas.floor}, sc->canvas);
@@ -76,7 +75,7 @@ static void	draw_stripe(t_fvec4 ray_res, t_fvec2 ray_dir, int x, t_scene *sc)
 
 void	render_raycast(t_scene *sc)
 {
-	int			x;
+	int		x;
 	t_fvec2	dir;
 	t_fvec2	ray_dir;
 	t_fvec3	plane;
@@ -90,6 +89,8 @@ void	render_raycast(t_scene *sc)
 		ray_dir.x = dir.x + plane.x * (2 * ((double) x / SCREEN_WIDTH) - 1);
 		ray_dir.y = dir.y + plane.y * (2 * ((double) x / SCREEN_WIDTH) - 1);
 		ret = raycast(sc->player.pos, ray_dir, sc);
+		if (ret.z <= 0)
+			pause();
 		sc->map.data[(int)ret.y][(int)ret.x] = 2;
 		draw_stripe(ret, ray_dir, x, sc);
 		++x;

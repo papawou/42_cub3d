@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   physics.c                                          :+:      :+:    :+:   */
+/*   tmp                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:04:06 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/10 00:57:46 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/09 15:55:45 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,17 @@ t_fvec4	raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc)
 			side = 1;
 		}
 	}
+	
+	double	wall_dist;
+	if (!side)
+	{
+		wall_dist = (v.s.x - v.d.x);
+	}
+	else
+	{
+		wall_dist = (v.s.y - v.d.y);
+	}
 	return ((t_fvec4){v.curr_cell.x, v.curr_cell.y,
-		(side == 0) * (v.s.x - v.d.x) + (side == 1) * (v.s.y - v.d.y), side});
+		wall_dist,
+		side});
 }

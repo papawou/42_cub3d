@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:28:01 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/08 21:37:30 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/10 01:01:10 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,26 @@
 # define E_CODE_INIT 2
 # define E_CODE_CLEAN 4
 
-# define SCREEN_WIDTH 1280
-# define SCREEN_HEIGHT 720
+# define SCREEN_WIDTH 720
+# define SCREEN_HEIGHT 360
 
 //KEYSYM
 //mouse
-#define XK_LMB 1
-#define XK_RMB 2
+# define XK_LMB 1
+# define XK_RMB 2
 //KB
-#define XK_ESC 100
-#define XK_Q 12
-#define XK_W 13
-#define XK_E 14
-#define XK_A 0
-#define XK_S 1
-#define XK_D 2
-#define XK_SPACE 49
-#define XK_LEFT 123
-#define XK_RIGHT 124
-#define XK_UP 126
-#define XK_DOWN 125
+# define XK_ESC 100
+# define XK_Q 12
+# define XK_W 13
+# define XK_E 14
+# define XK_A 0
+# define XK_S 1
+# define XK_D 2
+# define XK_SPACE 49
+# define XK_LEFT 123
+# define XK_RIGHT 124
+# define XK_UP 126
+# define XK_DOWN 125
 
 enum e_tile
 {
@@ -95,7 +95,7 @@ typedef struct s_scene
 _Bool		parser(char *file_path, t_scene *sc);
 //	parser_map.c
 int			count_line_x_words(char *line);
-t_vec2		parse_map_size(t_list *book); //faut fermer sa session :) //sacripan !
+t_vec2		parse_map_size(t_list *book);
 _Bool		parse_map(t_int_2d map, t_obj *player, t_list *book);
 //	check_map.c
 _Bool		check_map(int **map, t_vec2 len);
@@ -130,9 +130,9 @@ void		render_minimap(t_scene *sc);
 //	atlas.c
 void		clean_atlas(t_mlx mlx, t_atlas *atlas);
 //	raycast.c
-void render_raycast(t_scene *sc);
+void		render_raycast(t_scene *sc);
 
 //physics.c
-t_fvec4	raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc);
+t_fvec4		raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc);
 
 #endif

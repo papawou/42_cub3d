@@ -1,6 +1,6 @@
 NAME := cub3D
 
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := 
 DEBUG ?= 0
 ifeq ($(DEBUG), 1)
 CFLAGS += -g -fdiagnostics-color=always

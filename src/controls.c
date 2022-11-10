@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 13:53:46 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/09 10:10:09 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/09 16:22:57 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	controls_listener(int keycode, t_scene *sc)
 {
-	static double	move_speed = 0.5;
+	static double	move_speed = 0.12;
 	static double	rot_deg_speed = 1;
 
 	if (keycode == XK_LEFT)
