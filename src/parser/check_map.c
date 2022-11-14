@@ -6,13 +6,12 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:35:34 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/23 23:35:41 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/14 12:55:16 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-//todo? check if map is not one part ?
 static _Bool	check_hole(int **map, t_vec2 len, t_vec2 pos)
 {
 	if ((pos.x == 0 || pos.x == len.x - 1 || pos.y == 0 || pos.y == len.y -1))

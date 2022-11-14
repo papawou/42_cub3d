@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format.c                                           :+:      :+:    :+:   */
+/*   vec2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 23:45:34 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/26 14:31:07 by kmendes          ###   ########.fr       */
+/*   Created: 2022/11/06 10:46:50 by kmendes           #+#    #+#             */
+/*   Updated: 2022/11/06 10:48:27 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include <math.h>
+#include "libftmlx/math/ftmlx_vec.h"
 
-void	print_error(char *str)
+t_vec2	vec2_add(t_vec2 a, t_vec2 b)
 {
-	ft_putstr_fd(str, STDERR_FILENO);
-	ft_putstr_fd("\n", STDERR_FILENO);
+	return ((t_vec2){a.x + b.x, a.y + b.y});
+}
+
+t_vec2	vec2_minus(t_vec2 a, t_vec2 b)
+{
+	return ((t_vec2){a.x - b.x, a.y - b.y});
+}
+
+unsigned int	vec2_magn(t_vec2 v)
+{
+	return (sqrt(v.x * v.x + v.y * v.y));
 }

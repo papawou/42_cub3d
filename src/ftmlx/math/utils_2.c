@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmendes <kmendes@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 14:12:46 by kmendes           #+#    #+#             */
-/*   Updated: 2022/08/29 14:12:47 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/03 16:45:20 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftmlx/math/ftmlx_utils.h"
 
-float	deg_to_rad(float deg)
+double	deg_to_rad(double deg)
 {
 	return (deg * PI / 180.0);
 }
 
-float	rad_to_deg(float rad)
+double	rad_to_deg(double rad)
 {
 	return (rad * 180.0 / PI);
 }

@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:45:38 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/24 12:12:41 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/13 10:52:36 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,18 @@ _Bool	check_usage(int argc)
 	return (true);
 }
 
+int	logic(t_scene *sc)
+{
+	reset_map(sc->map, true);
+	return (0);
+}
+
 int	draw(t_scene *sc)
 {
+	logic(sc);
 	ftmlx_fill_img(sc->canvas, (t_color){255, 0, 0, 0});
+	ftmlx_fill_img(sc->minimap, (t_color){245, 124, 0, 0});
+	render_raycast(sc);
 	render_minimap(sc);
 	mlx_put_image_to_window(sc->ftmlx.mlx, sc->ftmlx.win,
 		sc->canvas->img, 0, 0);
@@ -33,7 +42,7 @@ void	config_loop(t_scene *sc)
 	t_mlx	mlx;
 
 	mlx = sc->ftmlx.mlx;
-	mlx_key_hook(sc->ftmlx.win, &controls_listener, sc);
+	mlx_hook(sc->ftmlx.win, 2, 1L << 1, &controls_listener, sc);
 	mlx_loop_hook(mlx, &draw, sc);
 }
 

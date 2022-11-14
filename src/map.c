@@ -6,11 +6,31 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:46:08 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/23 23:46:23 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/06 17:03:46 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+#include <stdio.h>
+
+void	tostring_map(t_int_2d *map)
+{
+	t_vec2	i;
+
+	i = (t_vec2){0};
+	while (i.y < map->len.y)
+	{
+		i.x = 0;
+		while (i.x < map->len.x)
+		{
+			printf("%d ", map->data[i.y][i.x]);
+			++i.x;
+		}
+		printf("\n");
+		++i.y;
+	}
+}
 
 void	clean_map(t_int_2d *map)
 {
@@ -28,7 +48,7 @@ void	clean_map(t_int_2d *map)
 	map->data = NULL;
 }
 
-static void	reset_map(t_int_2d map)
+void	reset_map(t_int_2d map, _Bool only_wall)
 {
 	t_vec2	map_i;
 
@@ -38,7 +58,13 @@ static void	reset_map(t_int_2d map)
 		map_i.x = 0;
 		while (map_i.x < map.len.x)
 		{
-			map.data[map_i.y][map_i.x] = -1;
+			if (only_wall)
+			{
+				if (map.data[map_i.y][map_i.x] == WALL_HIT)
+					map.data[map_i.y][map_i.x] = WALL;
+			}		
+			else
+				map.data[map_i.y][map_i.x] = EMPTY;
 			++map_i.x;
 		}
 		++map_i.y;
@@ -70,6 +96,6 @@ int	**create_map(t_vec2 map_size)
 		}
 		++i;
 	}
-	reset_map((t_int_2d){.len = map_size, .data = map});
+	reset_map((t_int_2d){.len = map_size, .data = map}, false);
 	return (map);
 }

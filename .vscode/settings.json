@@ -21,6 +21,9 @@
 		"ftmlx_vec.h": "c",
 		"algorithm": "c",
 		"ftmlx_graphics.h": "c",
-		"ftmlx_print.h": "c"
+		"ftmlx_print.h": "c",
+		"math.h": "c",
+		"ratio": "c",
+		"stdio.h": "c"
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 13:57:18 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/23 17:20:28 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/14 12:52:57 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,13 @@
 
 # include "libftmlx/math/ftmlx_vec.h"
 
-//utils.c
-float	ft_clamp(float min, float max, float value);
-float	ft_lerp(float start, float end, float alpha);
-float	ft_invlerp(float start, float end, float value);
-float	ft_remap(t_fvec2 in, t_fvec2 out, float value);
+double	ft_clamp(double min, double max, double value);
+double	ft_lerp(double start, double end, double alpha);
+double	ft_invlerp(double start, double end, double value);
+double	ft_remap(t_fvec2 in, t_fvec2 out, double value);
 
-//utils_2.c
-float	deg_to_rad(float deg);
-float	rad_to_deg(float rad);
+double	deg_to_rad(double deg);
+double	rad_to_deg(double rad);
 int		ft_abs(int a);
 double	ft_fabs(double a);
 

@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 02:59:48 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/24 11:57:36 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/03 16:45:20 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 
 t_fvec3	fvec3_norm(t_fvec3 v)
 {
-	float	div_magn;
+	double	div_magn;
 
 	div_magn = 1.0 / fvec3_magn(v);
 	return ((t_fvec3){v.x * div_magn, v.y * div_magn, v.z * div_magn});
 }
 
-float	fvec3_dot(t_fvec3 a, t_fvec3 b)
+double	fvec3_dot(t_fvec3 a, t_fvec3 b)
 {
-	float	dot;
-	float	magn_a;
-	float	magn_b;
+	double	dot;
+	double	magn_a;
+	double	magn_b;
 
 	magn_a = fvec3_magn(a);
 	magn_b = fvec3_magn(b);
@@ -43,7 +43,7 @@ t_fvec3	fvec3_cross(t_fvec3 a, t_fvec3 b)
 	return (cross);
 }
 
-float	fvec3_magn(t_fvec3 v)
+double	fvec3_magn(t_fvec3 v)
 {
 	return (sqrt(v.x * v.x + v.y * v.y + v.z * v.z));
 }
