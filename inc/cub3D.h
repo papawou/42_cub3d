@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:28:01 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/10 01:01:10 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/14 12:49:30 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,24 @@ enum e_tile
 	WALL_HIT = 2
 };
 
+enum e_card
+{
+	N = 1<<0,
+	S = 1<<1,
+	W = 1<<2,
+	E = 1<<3,
+	NS = 0b11,
+	WE = 0b1100
+};
+
+typedef struct s_rayres
+{
+	int			x;
+	int			y;
+	double		z;
+	enum e_card	card;
+}	t_rayres;
+
 typedef struct s_obj
 {
 	t_fvec2	pos;
@@ -101,6 +119,8 @@ _Bool		parse_map(t_int_2d map, t_obj *player, t_list *book);
 _Bool		check_map(int **map, t_vec2 len);
 //	parser_clean.c
 void		exit_clean_parser(void);
+//	parser_atlas.c
+_Bool		parse_atlas(t_scene *sc);
 
 //map.c
 int			**create_map(t_vec2 map_size);
@@ -131,8 +151,12 @@ void		render_minimap(t_scene *sc);
 void		clean_atlas(t_mlx mlx, t_atlas *atlas);
 //	raycast.c
 void		render_raycast(t_scene *sc);
+//	wall_tex.c
+int			get_texpos_x(t_rayres ray_res, t_fvec2 ray_dir,
+				t_img *tex, t_scene *sc);
+t_img		*get_tex(enum e_card card, t_vec2 cell, t_atlas *atlas);
 
 //physics.c
-t_fvec4		raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc);
+t_rayres	raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc);
 
 #endif

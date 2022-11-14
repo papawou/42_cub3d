@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:04:06 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/10 00:57:46 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/14 12:48:50 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,20 @@ t_raycast_vars	raycast_comp(t_fvec2 ray_start, t_fvec2 ray_dir)
 	return (v);
 }
 
-t_fvec4	raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc)
+static enum	e_card	retrieve_card(int side, t_fvec2 ray_dir)
+{
+	if (side == 0)
+	{
+		if (ray_dir.x < 0)
+			return ((enum e_card)W);
+		return ((enum e_card)E);
+	}
+	if (ray_dir.y < 0)
+		return ((enum e_card)N);
+	return ((enum e_card)S);
+}
+
+t_rayres	raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc)
 {
 	t_raycast_vars	v;
 	int				side;
@@ -94,6 +107,7 @@ t_fvec4	raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc)
 			side = 1;
 		}
 	}
-	return ((t_fvec4){v.curr_cell.x, v.curr_cell.y,
-		(side == 0) * (v.s.x - v.d.x) + (side == 1) * (v.s.y - v.d.y), side});
+	return ((t_rayres){v.curr_cell.x, v.curr_cell.y,
+		(side == 0) * (v.s.x - v.d.x) + (side == 1) * (v.s.y - v.d.y),
+		retrieve_card(side, ray_dir)});
 }

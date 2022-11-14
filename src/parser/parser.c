@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:35:48 by kmendes           #+#    #+#             */
-/*   Updated: 2022/10/23 23:37:37 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/10 22:07:47 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ _Bool	parser(char *file_path, t_scene *sc)
 	sc->map.len = parse_map_size(book);
 	sc->map.data = create_map(sc->map.len);
 	if (sc->map.data == NULL)
+	{
+		clean_parser(&book);
+		return (false);
+	}
+	if (!parse_atlas(sc))
 	{
 		clean_parser(&book);
 		return (false);

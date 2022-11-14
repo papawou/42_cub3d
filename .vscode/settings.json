@@ -23,6 +23,7 @@
 		"ftmlx_graphics.h": "c",
 		"ftmlx_print.h": "c",
 		"math.h": "c",
-		"ratio": "c"
+		"ratio": "c",
+		"stdio.h": "c"
 	}
 }

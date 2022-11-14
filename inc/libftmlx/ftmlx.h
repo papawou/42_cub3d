@@ -41,6 +41,8 @@ typedef struct s_ftmlx
 }	t_ftmlx;
 
 t_img	*ftmlx_new_img(t_mlx mlx, int x, int y);
+t_img	*ftmlx_new_png_img(t_mlx mlx, char *file);
+t_img	*ftmlx_new_xpm_img(t_mlx mlx, char *file);
 void	ftmlx_free_img(t_mlx mlx, t_img *img);
 int		*ftmlx_img_get_pxl(t_img *img, int x, int y);
 void	ftmlx_img_set_pxl_color(t_img *img, int x, int y, int color);

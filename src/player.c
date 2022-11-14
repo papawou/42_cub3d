@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 13:56:48 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/09 16:33:19 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/14 12:49:01 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ t_fvec2	get_player_dir(t_scene *sc)
 
 void	fix_padding_x(t_fvec2 *player_pos, t_fvec3 *incr_pos, t_scene *sc)
 {
-	double	mantissa;
-	double	real;
-	t_fvec4	ray_res;
+	double		mantissa;
+	double		real;
+	t_rayres	ray_res;
 
 	ray_res = raycast(*player_pos, fvec2_norm((t_fvec2){incr_pos->x, 0}), sc);
 	if (ray_res.z <= 0.11)
@@ -50,9 +50,9 @@ void	fix_padding_x(t_fvec2 *player_pos, t_fvec3 *incr_pos, t_scene *sc)
 
 void	fix_padding_y(t_fvec2 *player_pos, t_fvec3 *incr_pos, t_scene *sc)
 {
-	double	mantissa;
-	double	real;
-	t_fvec4	ray_res;
+	double		mantissa;
+	double		real;
+	t_rayres	ray_res;
 
 	ray_res = raycast(*player_pos, fvec2_norm((t_fvec2){0, incr_pos->y}), sc);
 	if (ray_res.z <= 0.11)
