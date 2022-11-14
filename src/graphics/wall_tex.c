@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:48:18 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/14 12:48:18 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/14 12:55:09 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,17 @@ int	get_texpos_x(t_rayres ray_res, t_fvec2 ray_dir, t_img *tex,
 	else
 		wall_x = sc->player.pos.x + ray_res.z * ray_dir.x;
 	wall_x -= floor(wall_x);
-	tex_x = wall_x * sc->atlas.tex->width;
+	tex_x = wall_x * tex->width;
 	if (ray_res.card & WE && ray_dir.x < 0)
-		tex_x = sc->atlas.tex->width - tex_x - 1;
+		tex_x = tex->width - tex_x - 1;
 	if (ray_res.card & NS && ray_dir.y > 0)
-		tex_x = sc->atlas.tex->width - tex_x - 1;
+		tex_x = tex->width - tex_x - 1;
 	return (tex_x);
 }
 
 t_img	*get_tex(enum e_card card, t_vec2 cell, t_atlas *atlas)
 {
+	(void)cell;
 	if (card == N)
 		return (atlas->tex_no);
 	if (card == S)

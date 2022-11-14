@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:28:01 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/14 12:49:30 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/14 12:54:32 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,8 @@
 # define SCREEN_WIDTH 720
 # define SCREEN_HEIGHT 360
 
-//KEYSYM
-//mouse
 # define XK_LMB 1
 # define XK_RMB 2
-//KB
 # define XK_ESC 100
 # define XK_Q 12
 # define XK_W 13
@@ -108,55 +105,38 @@ typedef struct s_scene
 	t_atlas		atlas;
 }	t_scene;
 
-//PARSER/*
-//	parser.c
 _Bool		parser(char *file_path, t_scene *sc);
-//	parser_map.c
 int			count_line_x_words(char *line);
 t_vec2		parse_map_size(t_list *book);
 _Bool		parse_map(t_int_2d map, t_obj *player, t_list *book);
-//	check_map.c
 _Bool		check_map(int **map, t_vec2 len);
-//	parser_clean.c
 void		exit_clean_parser(void);
-//	parser_atlas.c
 _Bool		parse_atlas(t_scene *sc);
 
-//map.c
 int			**create_map(t_vec2 map_size);
 void		clean_map(t_int_2d *map);
 void		tostring_map(t_int_2d *map);
 void		reset_map(t_int_2d map, _Bool only_wall);
 
-//scene.c
 void		init_scene(t_scene *sc);
 _Bool		check_scene(t_scene *sc);
 void		clean_scene(t_scene *sc);
 
-//format.c
 void		print_error(char *str);
 
-//controls.c
 int			controls_listener(int keycode, t_scene *sc);
 
-//player.c
 void		move_player(t_scene *sc, t_fvec2 move);
 void		rotate_player(t_scene *sc, t_quat rot);
 t_fvec2		get_player_dir(t_scene *sc);
 
-//GRAPHICS/*
-//	minimap.c
 void		render_minimap(t_scene *sc);
-//	atlas.c
 void		clean_atlas(t_mlx mlx, t_atlas *atlas);
-//	raycast.c
 void		render_raycast(t_scene *sc);
-//	wall_tex.c
-int			get_texpos_x(t_rayres ray_res, t_fvec2 ray_dir,
-				t_img *tex, t_scene *sc);
+int			get_texpos_x(t_rayres ray_res, t_fvec2 ray_dir, t_img *tex,
+				t_scene *sc);
 t_img		*get_tex(enum e_card card, t_vec2 cell, t_atlas *atlas);
 
-//physics.c
 t_rayres	raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 16:50:49 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/14 12:46:50 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/14 12:53:05 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static	void	draw_floor_ceil(t_vec3 lh, int x, t_scene *sc)
 
 static int	shader_pxl(int *c, t_scene *sc)
 {
+	(void) sc;
 	return (*c);
 }
 
