@@ -5,7 +5,7 @@ DEBUG ?= 0
 ifeq ($(DEBUG), 1)
 CFLAGS += -g -fdiagnostics-color=always
 else
-CFLAGS += -std=c89
+CFLAGS += -std=c89 -Ofast
 endif
 
 LIBS := ./libs/mlx/libmlx.a ./libs/libft/libft.a
