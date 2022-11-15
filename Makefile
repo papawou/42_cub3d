@@ -5,7 +5,7 @@ DEBUG ?= 0
 ifeq ($(DEBUG), 1)
 CFLAGS += -g -fdiagnostics-color=always
 else
-CFLAGS += -std=c89
+CFLAGS += -std=c89 -Ofast
 endif
 
 LIBS := ./libs/mlx/libmlx.a ./libs/libft/libft.a
@@ -13,7 +13,7 @@ LIBS_BIN := -framework OpenGL -framework AppKit -lm -lz
 LIBSINC := -I./libs/mlx -I./libs/libft/inc
 INC := -I./inc
 
-SRCS := main.c map.c format.c scene.c controls.c player.c physics.c\
+SRCS := main.c map.c format.c scene.c controls.c player.c physics.c	close_me.c\
 		graphics/minimap.c graphics/atlas.c	graphics/raycast.c	graphics/wall_tex.c\
 		parser/parser.c	parser/parser_map.c parser/check_map.c parser/parser_clean.c parser/parser_atlas.c\
 		gnl/get_next_line.c	gnl/get_next_line_utils.c
