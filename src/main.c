@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:45:38 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/13 10:52:36 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/15 13:29:55 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	logic(t_scene *sc)
 
 int	draw(t_scene *sc)
 {
+	if (sc->ftmlx.mlx == NULL)
+		return (0);
 	logic(sc);
 	ftmlx_fill_img(sc->canvas, (t_color){255, 0, 0, 0});
 	ftmlx_fill_img(sc->minimap, (t_color){245, 124, 0, 0});
@@ -43,6 +45,8 @@ void	config_loop(t_scene *sc)
 
 	mlx = sc->ftmlx.mlx;
 	mlx_hook(sc->ftmlx.win, 2, 1L << 1, &controls_listener, sc);
+	mlx_hook(sc->ftmlx.win, 17, 0, &close_me, sc);
+	mlx_expose_hook(sc->ftmlx.win, &draw, sc);
 	mlx_loop_hook(mlx, &draw, sc);
 }
 

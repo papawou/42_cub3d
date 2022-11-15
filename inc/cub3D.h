@@ -6,7 +6,7 @@
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 23:28:01 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/14 12:54:32 by kmendes          ###   ########.fr       */
+/*   Updated: 2022/11/15 13:31:26 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 
 # define XK_LMB 1
 # define XK_RMB 2
-# define XK_ESC 100
+# define XK_ESC 53
 # define XK_Q 12
 # define XK_W 13
 # define XK_E 14
@@ -138,5 +138,7 @@ int			get_texpos_x(t_rayres ray_res, t_fvec2 ray_dir, t_img *tex,
 t_img		*get_tex(enum e_card card, t_vec2 cell, t_atlas *atlas);
 
 t_rayres	raycast(t_fvec2 ray_start, t_fvec2 ray_dir, t_scene *sc);
+
+int			close_me(t_scene *sc);
 
 #endif

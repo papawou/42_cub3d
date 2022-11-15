@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atlas.c                                            :+:      :+:    :+:   */
+/*   close_me.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmendes <kmendes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 23:32:15 by kmendes           #+#    #+#             */
-/*   Updated: 2022/11/15 13:19:41 by kmendes          ###   ########.fr       */
+/*   Created: 2022/11/15 13:23:35 by kmendes           #+#    #+#             */
+/*   Updated: 2022/11/15 13:23:51 by kmendes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	clean_atlas(t_mlx mlx, t_atlas *atlas)
+int	close_me(t_scene *sc)
 {
-	ftmlx_free_img(mlx, atlas->tex);
-	atlas->tex = NULL;
-	ftmlx_free_img(mlx, atlas->tex_ea);
-	atlas->tex_ea = NULL;
-	ftmlx_free_img(mlx, atlas->tex_no);
-	atlas->tex_no = NULL;
-	ftmlx_free_img(mlx, atlas->tex_so);
-	atlas->tex_so = NULL;
-	ftmlx_free_img(mlx, atlas->tex_we);
-	atlas->tex_we = NULL;
+	clean_scene(sc);
+	exit(0);
 }
